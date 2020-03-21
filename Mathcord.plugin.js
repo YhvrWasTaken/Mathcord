@@ -1,31 +1,5 @@
 //META{"name":"Mathcord"}*//
 
-/*
-
-KaTeX License, I think I'm supposed to include it
-
-Copyright (c) 2013-2019 Khan Academy and other contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-*/
-
 var Mathcord = (function () {
     const config = {
         "info": {
@@ -38,16 +12,16 @@ var Mathcord = (function () {
     class Mathcord {
         getName() {
             return config.info.name;
-        };
+        }
         getAuthor() {
             return config.info.author;
-        };
+        }
         getDescription() {
             return config.info.description;
-        };
+        }
         getVersion() {
             return config.info.version;
-        };
+        }
         load() {
             //          load remote
             // css
@@ -92,7 +66,7 @@ var Mathcord = (function () {
 
             // Monitor the document for changes and render math as necessary
             var config = { childList: true, subtree: true };
-            var observer = new MutationObserver(function(mutations, observer) {
+            var observer = new MutationObserver(function(mutations) {
                 for (let mutation of mutations) {
                     var target = mutation.target;
                     // Iterate over all messages added to the scroller and typeset them
@@ -110,20 +84,20 @@ var Mathcord = (function () {
                             if (added.tagName == "DIV" && !added.getAttribute("class")) {
                                 continue;
                             }
-                            setTimeout(_ => renderMathInElement(added, options), 1000);
+                            setTimeout(() => renderMathInElement(added, options), 1000);
                         }
                     }
                 }
             });
             observer.observe(document.body, config);
-        };
-        unload() { this.stop() };
-        start() { };
-        stop() { };
-        onMessage() { };
-        onSwitch() { };
-        observer() { };
-        getSettingsPanel() { };
+        }
+        unload() { this.stop() }
+        start() { }
+        stop() { }
+        onMessage() { }
+        onSwitch() { }
+        observer() { }
+        getSettingsPanel() { }
     }
     return Mathcord;
 })()
